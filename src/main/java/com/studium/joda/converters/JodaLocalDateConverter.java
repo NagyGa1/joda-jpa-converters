@@ -11,11 +11,13 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package candlelight.joda.converters;
+package com.studium.joda.converters;
 
-import java.util.Date;
+import java.sql.Date;
+
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
+
 import org.joda.time.LocalDate;
 
 /**
@@ -25,13 +27,15 @@ import org.joda.time.LocalDate;
  * Date functions to meet our requirements.
  */
 @Converter(autoApply = true)
-public class JodaLocalDateConverter implements AttributeConverter<LocalDate, Date> {
+public class JodaLocalDateConverter
+		implements
+			AttributeConverter<LocalDate, Date> {
 
-    public Date convertToDatabaseColumn(LocalDate localDate) {
-        return localDate.toDate();
-    }
+	public Date convertToDatabaseColumn(LocalDate localDate) {
+		return new Date(localDate.toDate().getTime());
+	}
 
-    public LocalDate convertToEntityAttribute(Date date) {
-        return LocalDate.fromDateFields(date);
-    }
+	public LocalDate convertToEntityAttribute(Date date) {
+		return LocalDate.fromDateFields(date);
+	}
 }

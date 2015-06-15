@@ -11,10 +11,10 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package candlelight.joda.converters;
+package com.studium.joda.converters;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 import java.util.TimeZone;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -31,7 +31,7 @@ public class JodaLocalDateConverterTest {
     static {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
         cal.setTimeInMillis(MILLS);
-        date = cal.getTime();
+        date = new Date(cal.getTime().getTime());
 
     }
 
