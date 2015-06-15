@@ -7,4 +7,4 @@
  * Hopefully, in future releases of JPA, javax.time will be fully supported 
  * and this library will be rendered useless.
  */
-package candlelight.joda.converters;
+package com.studium.joda.converters;

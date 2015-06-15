@@ -11,7 +11,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package candlelight.joda.converters;
+package com.studium.joda.converters;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
@@ -26,7 +26,7 @@ import org.joda.time.Interval;
  * only serialize to a single field), so we do our best here by serializing the
  * Interval as a String.
  */
-@Converter
+@Converter(autoApply = true)
 public class JodaIntervalConverter implements AttributeConverter<Interval, String> {
 
     public String convertToDatabaseColumn(Interval interval) {

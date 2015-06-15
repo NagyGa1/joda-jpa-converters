@@ -11,24 +11,23 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package candlelight.joda.converters;
+package com.studium.joda.converters;
 
-import java.util.Date;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import org.joda.time.Instant;
+import org.joda.time.Duration;
 
 /**
- * Joda Instant <-> JPA 2.1 converter
+ * Joda Duration <-> JPA 2.1 converter
  */
 @Converter(autoApply = true)
-public class JodaInstantConverter implements AttributeConverter<Instant, Date> {
+public class JodaDurationConverter implements AttributeConverter<Duration, Long> {
 
-    public Date convertToDatabaseColumn(Instant instant) {
-        return instant.toDate();
+    public Long convertToDatabaseColumn(Duration duration) {
+        return duration.getMillis();
     }
 
-    public Instant convertToEntityAttribute(Date date) {
-        return new Instant(date);
+    public Duration convertToEntityAttribute(Long mills) {
+        return new Duration(mills);
     }
 }

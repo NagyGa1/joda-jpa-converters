@@ -1,4 +1,4 @@
-package candlelight.joda.converters;
+package com.studium.joda.converters;
 
 import java.util.Date;
 import javax.persistence.AttributeConverter;
