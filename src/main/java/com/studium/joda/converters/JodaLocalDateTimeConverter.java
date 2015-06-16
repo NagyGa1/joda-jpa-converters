@@ -16,10 +16,11 @@ public class JodaLocalDateTimeConverter
 			AttributeConverter<LocalDateTime, Timestamp> {
 
 	public Timestamp convertToDatabaseColumn(LocalDateTime dateTime) {
-		return new Timestamp(dateTime.toDate().getTime());
+		return dateTime == null ? null : new Timestamp(dateTime.toDate()
+				.getTime());
 	}
 
 	public LocalDateTime convertToEntityAttribute(Timestamp date) {
-		return new LocalDateTime(date);
+		return date == null ? null : new LocalDateTime(date);
 	}
 }

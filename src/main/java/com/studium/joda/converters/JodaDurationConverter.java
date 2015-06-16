@@ -24,10 +24,10 @@ import org.joda.time.Duration;
 public class JodaDurationConverter implements AttributeConverter<Duration, Long> {
 
     public Long convertToDatabaseColumn(Duration duration) {
-        return duration.getMillis();
+        return duration == null ? null : duration.getMillis();
     }
 
     public Duration convertToEntityAttribute(Long mills) {
-        return new Duration(mills);
+        return mills == null ? null : new Duration(mills);
     }
 }

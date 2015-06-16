@@ -30,10 +30,10 @@ import org.joda.time.Interval;
 public class JodaIntervalConverter implements AttributeConverter<Interval, String> {
 
     public String convertToDatabaseColumn(Interval interval) {
-        return interval.toString();
+        return interval == null ? null : interval.toString();
     }
 
     public Interval convertToEntityAttribute(String string) {
-        return Interval.parse(string);
+        return string == null ? null : Interval.parse(string);
     }
 }

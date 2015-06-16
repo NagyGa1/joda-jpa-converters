@@ -51,15 +51,53 @@ public class JodaPersistenceTest {
         emf.close();
 	}
 
+	private void testNullValues(final EntityManagerFactory emf) {
+		EntityManager em = emf.createEntityManager();
+
+		DateTimeContainingEntity entity = new DateTimeContainingEntity();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(entity);
+		tx.commit();
+
+		tx = em.getTransaction();
+		tx.begin();
+		DateTimeContainingEntity result = em.find(
+				DateTimeContainingEntity.class, entity.getId());
+		tx.commit();
+
+		assertEquals(entity.getDateTime(), result.getDateTime());
+		assertEquals(entity.getDuration(), result.getDuration());
+		assertEquals(entity.getInstant(), result.getInstant());
+		assertEquals(entity.getInterval(), result.getInterval());
+		assertEquals(entity.getLocalDate(), result.getLocalDate());
+		assertEquals(entity.getLocalDateTime(), result.getLocalDateTime());
+
+		em.close();
+		emf.close();
+	}
+
 	@Test
-	public void testEclipseLink() {
+	public void testEclipseLinkEntity() {
 		testPersistEntity(Persistence
 				.createEntityManagerFactory("jodaConverterTestPU_EclipseLink"));
 	}
 
 	@Test
-	public void testHibernate() {
+	public void testHibernateEntity() {
 		testPersistEntity(Persistence
+				.createEntityManagerFactory("jodaConverterTestPU_Hibernate"));
+	}
+
+	@Test
+	public void testEclipseLinkNullValues() {
+		testNullValues(Persistence
+				.createEntityManagerFactory("jodaConverterTestPU_EclipseLink"));
+	}
+
+	@Test
+	public void testHibernateNullValues() {
+		testNullValues(Persistence
 				.createEntityManagerFactory("jodaConverterTestPU_Hibernate"));
 	}
 

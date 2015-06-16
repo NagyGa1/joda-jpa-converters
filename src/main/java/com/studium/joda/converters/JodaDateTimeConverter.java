@@ -12,10 +12,10 @@ import org.joda.time.DateTime;
 public class JodaDateTimeConverter implements AttributeConverter<DateTime, Date> {
 
     public Date convertToDatabaseColumn(DateTime dateTime) {
-        return dateTime.toDate();
+        return dateTime == null ? null : dateTime.toDate();
     }
 
     public DateTime convertToEntityAttribute(Date date) {
-        return new DateTime(date);
+        return date == null ? null : new DateTime(date);
     }
 }

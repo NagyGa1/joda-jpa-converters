@@ -25,10 +25,10 @@ import org.joda.time.Instant;
 public class JodaInstantConverter implements AttributeConverter<Instant, Date> {
 
     public Date convertToDatabaseColumn(Instant instant) {
-        return instant.toDate();
+        return instant == null ? null : instant.toDate();
     }
 
     public Instant convertToEntityAttribute(Date date) {
-        return new Instant(date);
+        return date == null ? null : new Instant(date);
     }
 }

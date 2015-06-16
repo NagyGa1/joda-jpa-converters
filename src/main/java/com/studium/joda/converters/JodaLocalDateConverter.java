@@ -32,10 +32,10 @@ public class JodaLocalDateConverter
 			AttributeConverter<LocalDate, Date> {
 
 	public Date convertToDatabaseColumn(LocalDate localDate) {
-		return new Date(localDate.toDate().getTime());
+		return localDate == null ? null : new Date(localDate.toDate().getTime());
 	}
 
 	public LocalDate convertToEntityAttribute(Date date) {
-		return LocalDate.fromDateFields(date);
+		return date == null ? null : LocalDate.fromDateFields(date);
 	}
 }
