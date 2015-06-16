@@ -5,11 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.joda.time.DateTime;
-import org.joda.time.Duration;
-import org.joda.time.Instant;
-import org.joda.time.Interval;
-import org.joda.time.LocalDate;
+import org.joda.time.*;
 
 /**
  * Test Entity which includes the org.joda.time.DateTime object
@@ -26,6 +22,8 @@ public class DateTimeContainingEntity implements Serializable {
     private DateTime dateTime;
 
     private LocalDate localDate;
+
+    private LocalDateTime localDateTime;
 
     private Duration duration;
 
@@ -57,6 +55,14 @@ public class DateTimeContainingEntity implements Serializable {
     public void setLocalDate(LocalDate localDate)
     {
         this.localDate = localDate;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
 
     public Duration getDuration()

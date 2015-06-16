@@ -27,6 +27,7 @@ public class JodaPersistenceTest {
 		entity.setInterval(new Interval(new DateTime(2011, 1, 1, 0, 0),
 				new DateTime(2012, 1, 1, 0, 0)));
 		entity.setLocalDate(LocalDate.now());
+		entity.setLocalDateTime(LocalDateTime.now());
 
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -44,6 +45,7 @@ public class JodaPersistenceTest {
 		assertEquals(entity.getInstant(), result.getInstant());
 		assertEquals(entity.getInterval(), result.getInterval());
 		assertEquals(entity.getLocalDate(), result.getLocalDate());
+		assertEquals(entity.getLocalDateTime(), result.getLocalDateTime());
 
         em.close();
         emf.close();
